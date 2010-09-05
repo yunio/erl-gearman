@@ -1,0 +1,10 @@
+{application, PACKAGE_NAME,
+    [{description, "the gearman erlang client"},
+     {vsn, "PACKAGE_VERSION"},
+     {modules, [MODULES]},
+     {registered, []},
+     {applications, [kernel, stdlib]},
+     {mod, {PACKAGE_NAME_app, []}},
+     {env, []}
+    ]
+}.

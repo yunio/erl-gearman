@@ -1,0 +1,7 @@
+** this is the overview.doc file for the application 'erl-gearman' **
+
+@author richie <richie at yun.io>
+@copyright 2010
+@version @VERSION@
+@title Welcome to the `erl-gearman' application!
+@doc `erl-gearman' is an erlang client for gearman.
