@@ -161,14 +161,17 @@ handle_cast(_Msg, State) ->
     {noreply, State}.
 
 handle_info({gearman_async, TaskId, Data}, State) ->
-    ?DEBUG2("gearman_async handle taskid:~p Data:~p", [TaskId, Data]),
+    ?DEBUG2("gearman_async handle taskid:~p Data:~p~n", [TaskId, Data]),
     State2 = handle_response_inter(TaskId, Data, State),
     {noreply, State2};
+handle_info({'EXIT', Port, Reason}, State = #state{port = Port}) ->
+    ?DEBUG2("port exit:~p~n", [Reason]),
+    {stop, Reason, State};
 handle_info(_Info, State) ->
     {noreply, State}.
 
 terminate(_Reason, _State = #state{port = Port}) ->
-    ?DEBUG2("client close~n", []),
+    ?DEBUG2("client close:~p~n", [_Reason]),
     port_close(Port),
     ok.
 
